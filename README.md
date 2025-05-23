@@ -22,9 +22,7 @@ It combines utility and design in a sleek layout featuring an inbox, chat view, 
 
 💨 Tailwind CSS for clean, responsive styling
 
-🤖 Gemini API for intelligent suggestions
-
-🧩 Framer Motion for smooth UI animations
+🧩 Smooth UI animations
 
 📏 Custom draggable panel resizer
 
