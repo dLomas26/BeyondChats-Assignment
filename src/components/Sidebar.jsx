@@ -28,7 +28,7 @@ function Sidebar({ conversations, activeConversation, onConversationSelect, isOp
 
   return (
     <div className={clsx(
-      "border-r border-gray-200 flex flex-col bg-white transition-all duration-300",
+      "border-r border-gray-200 flex flex-col bg-white transition-left 0.3s ease-in-out duration-150",
       isOpen ? "w-80" : "w-0 md:w-16"
     )}>
       <div className="p-4 border-b border-gray-200 flex items-center justify-between">

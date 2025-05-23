@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
-import { formatTime, suggestions } from '../data/mockData';
-import { IoMenuOutline, IoSendSharp, IoPaperPlaneOutline, IoAttachOutline, IoHappyOutline, IoCloseOutline } from 'react-icons/io5';
+import { formatTime, suggestions, getAIResponse } from '../data/mockData';
+import { IoMenuOutline, IoSendSharp, IoPaperPlaneOutline, IoAttachOutline, IoHappyOutline } from 'react-icons/io5';
 import clsx from 'clsx';
 
 function ChatWindow({ conversation, onToggleSidebar, sidebarOpen }) {
   const [newMessage, setNewMessage] = useState('');
+  const [aiQuery, setAiQuery] = useState('');
   const messagesEndRef = useRef(null);
   const [messages, setMessages] = useState(conversation.messages);
   
@@ -15,6 +16,21 @@ function ChatWindow({ conversation, onToggleSidebar, sidebarOpen }) {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  const formatMessageContent = (content) => {
+    return content.split('\n').map((line, i) => {
+      // Handle bold text
+      const parts = line.split(/(\*\*.*?\*\*)/g);
+      const formattedParts = parts.map((part, j) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={j}>{part.slice(2, -2)}</strong>;
+        }
+        return part;
+      });
+      
+      return <p key={i} className="mb-2">{formattedParts}</p>;
+    });
+  };
   
   const handleSendMessage = (e) => {
     e.preventDefault();
@@ -31,6 +47,36 @@ function ChatWindow({ conversation, onToggleSidebar, sidebarOpen }) {
     
     setMessages([...messages, newMsg]);
     setNewMessage('');
+
+    // AI recommendation after user message
+    setTimeout(() => {
+      const aiResponse = getAIResponse(newMessage);
+      const aiMsg = {
+        id: `msg-${messages.length + 2}`,
+        sender: 'ai',
+        content: aiResponse,
+        timestamp: new Date(),
+        status: 'sent'
+      };
+      setMessages(prev => [...prev, aiMsg]);
+    }, 1000);
+  };
+
+  const handleAIQuery = (e) => {
+    e.preventDefault();
+    if (!aiQuery.trim()) return;
+
+    const response = getAIResponse(aiQuery);
+    const newMsg = {
+      id: `msg-${messages.length + 1}`,
+      sender: 'ai',
+      content: response,
+      timestamp: new Date(),
+      status: 'sent'
+    };
+
+    setMessages([...messages, newMsg]);
+    setAiQuery('');
   };
   
   const handleKeyDown = (e) => {
@@ -45,14 +91,14 @@ function ChatWindow({ conversation, onToggleSidebar, sidebarOpen }) {
       <div className="flex-1 flex flex-col bg-gray-50 relative">
         <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
           <div className="flex items-center">
-            {!sidebarOpen && (
+            {/* {!sidebarOpen && (
               <button 
                 className="mr-4 text-gray-500 hover:text-gray-700"
                 onClick={onToggleSidebar}
               >
                 <IoMenuOutline className="h-5 w-5" />
               </button>
-            )}
+            )} */}
             <div className="flex items-center">
               {conversation.customer.avatar ? (
                 <img 
@@ -106,7 +152,9 @@ function ChatWindow({ conversation, onToggleSidebar, sidebarOpen }) {
                         </div>
                       )}
                       <div>
-                        <div className="whitespace-pre-line">{message.content}</div>
+                        <div className="whitespace-pre-line">
+                          {formatMessageContent(message.content)}
+                        </div>
                         <div className="mt-1 text-xs text-gray-500 flex items-center">
                           {message.sender === 'agent' && message.status === 'seen' && (
                             <span className="mr-1">Seen · </span>
@@ -146,6 +194,7 @@ function ChatWindow({ conversation, onToggleSidebar, sidebarOpen }) {
                   <div 
                     key={suggestion.id}
                     className="text-sm bg-white border border-gray-200 rounded-lg px-3 py-2 cursor-pointer hover:bg-gray-50"
+                    onClick={() => setAiQuery(suggestion.content)}
                   >
                     {suggestion.content}
                   </div>
@@ -154,9 +203,11 @@ function ChatWindow({ conversation, onToggleSidebar, sidebarOpen }) {
             </div>
             
             <div className="mt-52">
-              <form className="relative">
+              <form onSubmit={handleAIQuery} className="relative">
                 <input
                   type="text"
+                  value={aiQuery}
+                  onChange={(e) => setAiQuery(e.target.value)}
                   placeholder="Ask a question..."
                   className="block w-full border border-gray-300 rounded-lg pl-3 pr-10 py-5 text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500"
                 />

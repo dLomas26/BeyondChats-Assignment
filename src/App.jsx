@@ -15,13 +15,7 @@ function App() {
   }
 
   return (
-     <div className="h-full flex flex-col bg-white">
-    {/* //   <header className="bg-white border-b border-gray-200 px-4 py-3">
-    //     <div className="flex items-center">
-    //       <h1 className="text-xl font-semibold text-gray-900">Customer Support</h1>
-    //     </div>
-    //   </header> */}
-
+    <div className="h-full flex flex-col bg-white">
       <div className="flex flex-1 overflow-hidden">
         <Sidebar 
           conversations={conversations} 

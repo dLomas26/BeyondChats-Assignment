@@ -170,6 +170,24 @@ export const suggestions = [
   }
 ];
 
+export const getAIResponse = (query) => {
+  const responses = {
+    refund: "Based on our policy, we offer **refunds** for unopened items within **30 days** of purchase. I can help process this refund request. Would you like me to guide you through the process?",
+    return: "Our **return policy** allows returns within **30 days** of purchase. The item must be in its original condition with tags attached. Here's what you need to do:\n\n1. **Package the item** securely\n2. Include the **original receipt**\n3. Use our **return shipping label**",
+    shipping: "We offer multiple shipping options:\n\n- **Standard shipping**: 3-5 business days\n- **Express shipping**: 1-2 business days\n- **Same-day delivery**: Available in select areas",
+    payment: "We accept the following **payment methods**:\n\n- Credit/Debit cards\n- PayPal\n- Apple Pay\n- Google Pay",
+    default: "I'm here to help! I notice you're discussing a return. Here are some key points:\n\n- **30-day return window**\n- **Original packaging** required\n- **Free return shipping**\n\nWhat specific information can I provide?"
+  };
+
+  const lowercaseQuery = query.toLowerCase();
+  
+  if (lowercaseQuery.includes('refund')) return responses.refund;
+  if (lowercaseQuery.includes('return')) return responses.return;
+  if (lowercaseQuery.includes('shipping')) return responses.shipping;
+  if (lowercaseQuery.includes('payment')) return responses.payment;
+  return responses.default;
+};
+
 export const formatTime = (date) => {
   const now = new Date();
   const diff = Math.floor((now - date) / 1000 / 60); // difference in minutes
