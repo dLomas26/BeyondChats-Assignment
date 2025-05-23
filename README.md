@@ -1,11 +1,7 @@
 💬 AI-Enhanced Admin Panel
-<div align="center">
-🎯 Live Preview - https://beyond-chats-assignment-phi.vercel.app/
-🚀 Built with React, Tailwind CSS.
-🧠 AI-powered admin panel for smarter, faster support.
-
-</div>
-🧠 Overview
+  live demo: https://mern-chat-app-x01f.onrender.com/login
+  
+##Overview
 AI-Enhanced Admin Panel is a modern, scalable web application designed to revolutionize customer support workflows. Built using React and Tailwind CSS, this app empowers support agents with intelligent features like:
 
 📬 Smart reply suggestions
@@ -16,15 +12,15 @@ AI-Enhanced Admin Panel is a modern, scalable web application designed to revolu
 
 It combines utility and design in a sleek layout featuring an inbox, chat view, AI Copilot panel, and optional user detail view. With a strong focus on responsiveness, interactivity, and usability, this app demonstrates my ability to craft real-world, production-ready AI-integrated tools.
 
-🚀 Features
-🔹Inbox Sidebar: View and select conversations with intuitive sorting and search functionality.
-🔹Chat Area: Displays messages with AI-generated replies and options to suggest video calls for complex issues.
-🔹AI Copilot Panel:Surfaces relevant knowledge base articles to assist agents and Supports follow-up questions with AI-generated insights.
-🔹Details Panel: Quick access to user details and conversation metadata.
-🔹Resizable Layout: Draggable divider to resize the AI Copilot panel for a personalized experience.
-🔹Responsive Design: Optimized for both desktop and mobile devices.
+##Features
+- Inbox Sidebar: View and select conversations with intuitive sorting and search functionality.
+- Chat Area: Displays messages with AI-generated replies and options to suggest video calls for complex issues.
+- AI Copilot Panel:Surfaces relevant knowledge base articles to assist agents and Supports follow-up questions with AI-generated insights.
+- Details Panel: Quick access to user details and conversation metadata.
+- Resizable Layout: Draggable divider to resize the AI Copilot panel for a personalized experience.
+- Responsive Design: Optimized for both desktop and mobile devices.
 
-🛠 Technical Highlights
+##Technical Highlights
 ⚛ React for component-driven development
 
 💨 Tailwind CSS for clean, responsive styling
@@ -39,7 +35,7 @@ It combines utility and design in a sleek layout featuring an inbox, chat view, 
 
 📱 Fully responsive: Desktop-first, mobile-friendly
 
-🔧 Installation
+##Installation
 
 # 1. Clone the repo
 ```
@@ -62,20 +58,12 @@ npm run dev
 http://localhost:5173
 ```
 
-📦 Tech Stack
-Layer	Tech
-Frontend	React, Tailwind CSS
-AI Logic	Gemini API (via mock)
-Animations	Framer Motion
-Build Tool	Vite
-Deployment	Vercel / Netlify
+##Tech Stack
+-Frontend: React, Tailwind CSS
+-Deployment: Vercel / Netlify (optional)
 
-📬 Contact
-👨‍💻 Author: Deepanshu Lomas
-📧 Email: deepanshulomas@gmail.com
-🔗 GitHub: github.com/dLomas26
+## Contact
+-Author: Deepanshu Lomas
+-Email: deepanshulomas@gmail.com
+-GitHub: github.com/dLomas26
 
-<div align="center">
-⭐ Star this repo if it helped or inspired you! ⭐
-
-</div>
