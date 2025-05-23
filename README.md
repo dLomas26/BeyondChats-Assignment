@@ -1,6 +1,6 @@
 # AI-Enhanced Admin Panel
   
-live demo: https://mern-chat-app-x01f.onrender.com/login
+live demo: https://beyond-chats-assignment-phi.vercel.app/
   
 ## Overview
 
