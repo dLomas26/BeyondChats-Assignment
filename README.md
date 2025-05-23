@@ -55,8 +55,9 @@ http://localhost:5173
 
 ## Tech Stack
 
--Frontend: React, Tailwind CSS
--Deployment: Vercel / Netlify (optional)
+-**Frontend**: React, Tailwind CSS
+
+-**Deployment**: Vercel / Netlify (optional)
 
 ## Contact
 
