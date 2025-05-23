@@ -61,6 +61,8 @@ http://localhost:5173
 ## Contact
 
 -**Author**: Deepanshu Lomas
+
 -**Email**: deepanshulomas@gmail.com
+
 -**GitHub**: github.com/dLomas26
 
